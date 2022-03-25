@@ -1,8 +1,11 @@
-const {userGet} =  require("../controllers/user");
+const {userGet, userCreate} =  require("../controllers/user");
 
 function userRoute(app) {
+//Create
+app.post("/userCreate", userCreate);
 
-    app.get("/user", userGet)
+    //Read
+    app.get("/user", userGet);
     
 }
 
