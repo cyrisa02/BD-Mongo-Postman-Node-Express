@@ -24,4 +24,18 @@ async function userCreate(req, res) {
   }
 }
 
-module.exports = { userGet, userCreate };
+async function userDelete(req, res) {
+    try {
+        if(!req.body._id){
+            return res.json("_id manquant");
+        }
+      const User = req.app.get("models").User;
+      const ToDeleteUser = await User.findById(req.body._id);
+      await ToDeleteUser.remove();
+      res.json("Successfully deleted")
+    } catch (error) {
+      res.json(error.message);
+    }
+  }
+
+module.exports = { userGet, userCreate, userDelete };
