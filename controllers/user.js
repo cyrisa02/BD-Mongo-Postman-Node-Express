@@ -38,4 +38,20 @@ async function userDelete(req, res) {
     }
   }
 
-module.exports = { userGet, userCreate, userDelete };
+  async function userUpdate(req, res) {
+    try {
+        if(!req.body._id || !req.body.toModify){
+            return res.json("_id ou champ(s) manquant(s)");
+        }
+      const User = req.app.get("models").User;
+      const ToModifyUser = await User.findById(req.body._id);
+      const toModifyKeys = Object.keys(req.body.toModify);
+      for (const key of toModifyKeys){
+          ToModifyUser[key] = req.body.toModify[key];
+      }
+      await ToModifyUser.save();
+    } catch (error) {
+      res.json(error.message);
+    }
+  }
+module.exports = { userGet, userCreate, userDelete, userUpdate };

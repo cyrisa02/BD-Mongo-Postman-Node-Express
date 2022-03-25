@@ -129,6 +129,25 @@ aller dans le body / raw /json
 
 faire un copier coller de l'id d'un des exemple qu'on a créé (aller sur le chemein GET/user)
 
+-----------------------------------
+Fonction Update / POST
+
+routes
+controllers
+on a besoin de cibler la suppression donc on va utiliser le Id + un if de vérif si l'Id existe 
+test de la route dans postman 
+aller dans le body / raw /json
+utiliser le toModify  comme ceci 
+
+{
+    "_id": "623dc18efb714ea6f9d6fd25",
+    "toModify": {
+        "lastName": "Champ à modifier"
+    }
+}
+
+
+
 
 
 
