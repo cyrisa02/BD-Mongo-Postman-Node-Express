@@ -1,3 +1,9 @@
+const encryptPassword = require("../utils/encryptPassword");
+const decryptPassword = require("../utils/decryptPassword");
+
+
+
+
 async function userGet(req, res) {
   try {
     const User = req.app.get("models").User;
@@ -10,12 +16,21 @@ async function userGet(req, res) {
 
 async function userCreate(req, res) {
   try {
+    if (!req.body.password){
+      return res.json("No Password");
+    }
+    if(req.role !== "manager"){
+      return res.json("Unauthorized");
+    }
+    console.log(req.role);
+    const {token, salt, hash} = encryptPassword(req.body.password);
     const User = req.app.get("models").User;
    
     const NewUser = await new User({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       dateOfBirth: req.body.dateOfBirth,
+      token, salt, hash
     }).save();
 
     res.json(NewUser);
@@ -28,6 +43,9 @@ async function userDelete(req, res) {
     try {
         if(!req.body._id){
             return res.json("_id manquant");
+        }
+        if(req.role !== "manager"){
+          return res.json("Unauthorized");
         }
       const User = req.app.get("models").User;
       const ToDeleteUser = await User.findById(req.body._id);
@@ -43,6 +61,9 @@ async function userDelete(req, res) {
         if(!req.body._id || !req.body.toModify){
             return res.json("_id ou champ(s) manquant(s)");
         }
+        if(req.role !== "manager"){
+          return res.json("Unauthorized");
+        }
       const User = req.app.get("models").User;
       const ToModifyUser = await User.findById(req.body._id);
       const toModifyKeys = Object.keys(req.body.toModify);
@@ -52,6 +73,24 @@ async function userDelete(req, res) {
       await ToModifyUser.save();
     } catch (error) {
       res.json(error.message);
-    }
-  }
-module.exports = { userGet, userCreate, userDelete, userUpdate };
+    }}
+
+    //async function userLogin(req, res) {
+    //   try {
+    //      if (!req.body._id || !req.body.password) {
+    //       return res.json("_id or password missing");
+    //     }
+    //      const User = req.app.get("models").User;
+    //     const toVerifyUser = await User.findById(req.body._id);
+    //     if (!toVerifyUser) {
+    //        return "No user found";
+    //     }
+    //      res.json(decryptPassword(toVerifyUser, req.body.password)); 
+    //   }
+    //    catch (error) {
+    //      res.json(error.message);
+    //  }
+    //  }
+   // console.log("Login");
+   // }
+module.exports = { userGet, userCreate, userDelete, userUpdate};

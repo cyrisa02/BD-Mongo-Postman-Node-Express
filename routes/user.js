@@ -12,6 +12,9 @@ function userRoute(app) {
 
   //Update
   app.post("/userUpdate", userUpdate);
+
+  //Login
+ //app.post("/userLogin", userLogin);
 }
 
 module.exports = userRoute;

@@ -1,3 +1,14 @@
+Pour allumer le serveur sur le terminal 
+npx nodemon index.js  mettre la fonction terminal divisé
+
+postman : icone en favori 
+
+mongoDB icone en favori
+double clique sur récent
+myFirstDatabase
+
+
+
 Initialisation
 
 npm init -y 
@@ -146,6 +157,59 @@ utiliser le toModify  comme ceci
     }
 }
 
+---------------------------------------
+
+Gestion de l'authentification token /salt / hash
+dans l'entité User on a ID/firstName/ lastName / dateOfBirth / token / salt / hash 
+
+créer un dossier utils 
+puis un fichier encryptPassword
+
+installer des bundle de crypto
+
+npm i crypto-js uid2 
+
+faire le fichier encryptPassword
+puis dans controllers 
+
+on appelle encryptPassword puis on modifie userCreate 
+vérif si il ya un password avec un if 
+
+vérif dans postman sur le chemin userCreate 
+
+{
+    "firstName": "DUDU",
+    "lastName": "Dudu",
+    "dateOfBirth": "2022-03-25T13:20:14.259Z",
+    "password" : "motdepasse"
+
+}
+
+
+------------------------------
+
+Login
+
+
+--------------------------
+Gestion des rôles
+
+les rôles doivent passer sur toutes les routes donc on a besoin d'un middleware
+3 paramètres: req, res et next
+
+qd je lance sur postman un send sur le chemin GEt USER, SUR LE TERMINAL apparait 'i'm the middleware 
+
+c'est le token qui va donner les autorisations aux différents users (sportifs= customer, coach,  manager, )
+donc verif du token, pas de token, pas de user
+
+ensuite on peut mettre les autoirsation par role ex: dans create , update et delete
+if(req.role !== "manager"){
+      return res.json("Unauthorized");
+    }
+
+-------------------------------
+Création de customer et coach
+-> création de deux modèles
 
 
 
@@ -156,10 +220,13 @@ utiliser le toModify  comme ceci
 
 
 
-PASSWORD
 
 
-mettre tout dans le fichier Mongo + attention au password
+
+ACHTUNG PASSWORD
+
+
+mettre ce fichier readme  dans le fichier. ods  Mongo 
 
 
 

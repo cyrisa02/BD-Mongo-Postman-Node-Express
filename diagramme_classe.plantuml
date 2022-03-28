@@ -1,0 +1,32 @@
+@startuml
+hide circle
+
+class User {
+    Id: integer {unique}
+    firstName: string 
+    lastName: string 
+    dateOfBirth: date 
+    token: string 
+    salt: string 
+    hash: string 
+    role: string
+}
+
+class Customer {
+    Id: integer {unique}
+    user: string
+    Subscriptions: string
+    level: string
+}
+
+class Coach {
+    Id: integer {unique}
+    user: string 
+    bio: string
+    discipline: string
+}
+
+
+User "0..n" -- "0..n" Customer : être
+User "0..n" -- "0..n" Coach : être
+@enduml
