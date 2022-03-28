@@ -19,7 +19,7 @@ const getRoleMiddleware = require ("./utils/getRoleMiddleware");
 
 
  
- const url = "mongodb+srv://cyrisa02:PASSWORD@expressapi.atis6.mongodb.net/myFirstDatabase?retryWrites=true&w=majority ";  /* path of your db */;
+ const url = "mongodb+srv://cyrisa02:1970vicky02@expressapi.atis6.mongodb.net/myFirstDatabase?retryWrites=true&w=majority ";  /* path of your db */;
  
  //to connect or create our database
   mongoose.connect(url, { 

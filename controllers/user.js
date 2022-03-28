@@ -65,12 +65,12 @@ async function userDelete(req, res) {
           return res.json("Unauthorized");
         }
       const User = req.app.get("models").User;
-      const ToModifyUser = await User.findById(req.body._id);
+      const toModifyUser = await User.findById(req.body._id);
       const toModifyKeys = Object.keys(req.body.toModify);
       for (const key of toModifyKeys){
-          ToModifyUser[key] = req.body.toModify[key];
+          toModifyUser[key] = req.body.toModify[key];
       }
-      await ToModifyUser.save();
+      await toModifyUser.save();
     } catch (error) {
       res.json(error.message);
     }}

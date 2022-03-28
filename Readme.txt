@@ -222,6 +222,19 @@ postman POST customerCreate
 
 dans MongoDB création des deux tables customers et users
 
+créer les controllers
+
+pour le Delete customer, il faut supprimer tout user + customer
+
+-------------------------------
+Population d'une requête :  on va enrichir notre table customer avec les infos de user (le père)
+en mettant le populate dans  const CustomersList = await Customer.find().populate("user");
+ça va rechercher les info de user
+
+
+
+
+
 
 
 
