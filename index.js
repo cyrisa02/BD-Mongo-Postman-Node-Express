@@ -2,9 +2,9 @@
 
 const express = require ("express");
 const mongoose = require("mongoose");
-
 const models = require ("./models");
 const getRoleMiddleware = require ("./utils/getRoleMiddleware");
+//const slotRoute = require("./routes/slot");
 
 
 //mongoose.connect("mongodb://localhost/sportCenters", {
@@ -42,6 +42,9 @@ app.use(getRoleMiddleware);
 
 userRoute(app);
 customerRoute(app);
+//coachRoute(app); à terminer
+//subscriptionRoute(app); à terminer
+//slotRoute(app);
 
 app.listen(3000, ()=> {
     console.log("Server successfully launched");

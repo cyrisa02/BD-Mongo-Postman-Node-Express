@@ -17,6 +17,7 @@ class Customer {
     user: string
     Subscriptions: array
     level: string
+    slots: string
 }
 
 class Coach {
@@ -24,6 +25,7 @@ class Coach {
     user: string 
     bio: string
     discipline: string
+    slots: string
 }
 
 class Subscription {
@@ -36,7 +38,20 @@ class Subscription {
 }
 
 
+class Slots {
+    date : date
+    starttHour: string
+    endHour: string
+    label: string
+    peopleLimit: integer
+    coach: string
+    customers : array
+
+}
+
 User "0..n" -- "0..n" Customer : être
 User "0..n" -- "0..n" Coach : être
 Customer "1..1"--"0..n" Subscription :  possèder
+Customer "0..n"--"0..n" Slot : réserver
+Coach "1..1"--"1..n" Slot : manager
 @enduml
