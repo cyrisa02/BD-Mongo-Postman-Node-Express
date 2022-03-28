@@ -26,7 +26,17 @@ class Coach {
     discipline: string
 }
 
+class Subscription {
+    Id: integer {unique}
+    name: sting
+    beginningDate: date
+    endDate: date
+    payementMethod: string
+    amountPaid: integer
+}
+
 
 User "0..n" -- "0..n" Customer : être
 User "0..n" -- "0..n" Coach : être
+Customer "1..1"--"0..n" Subscription :  possèder
 @enduml

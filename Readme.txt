@@ -231,6 +231,30 @@ Population d'une requête :  on va enrichir notre table customer avec les infos 
 en mettant le populate dans  const CustomersList = await Customer.find().populate("user");
 ça va rechercher les info de user
 
+-------------------------
+
+Filter une requête
+
+intéressant pour les coachs parce qu'il y a la liste de disciplines 
+
+http://localhost:3000/coaches?discipline=boxe 
+
+
+--------
+Gestion des abonnements / Subscription
+models
+
+Subscription est ratachée à customer et c'est très important pour le delete 
+
+
+-------------------
+
+Création des créneaux de résa
+
+
+
+
+
 
 
 

@@ -1,5 +1,6 @@
 const User = require("./user");
 const Customer = require ("./customer");
 const Coach = require ("./coach");
+const Subscription = require ("./subscription");
 
-module.exports = { User, Coach, Customer};
+module.exports = { User, Coach, Customer, Subscription};

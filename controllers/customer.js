@@ -2,7 +2,7 @@ const encryptPassword = require("../utils/encryptPassword");
 
 async function customers(req, res) {
   const Customer = req.app.get("models").Customer;
-  const CustomersList = await Customer.find().populate("user");
+  const CustomersList = await Customer.find().populate("user").populate("subscriptions");
   res.json(CustomersList);
 }
 

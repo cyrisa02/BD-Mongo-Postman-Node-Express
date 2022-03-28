@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const CustomerSchema = new mongoose.Schema({
-    subscriptions : { type: Array, defautlt: []},
+    subscriptions :[{type : mongoose.Schema.Types.ObjectId, ref: "Subscrition"}] ,
     level: {type: String, default: "beginner"},
     user : {type : mongoose.Schema.Types.ObjectId, ref: "User"},
 
