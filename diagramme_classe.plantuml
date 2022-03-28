@@ -15,7 +15,7 @@ class User {
 class Customer {
     Id: integer {unique}
     user: string
-    Subscriptions: string
+    Subscriptions: array
     level: string
 }
 

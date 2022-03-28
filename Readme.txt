@@ -1,4 +1,6 @@
 Pour allumer le serveur sur le terminal 
+
+dans index.js mettre le code chien pour la BD!!!
 npx nodemon index.js  mettre la fonction terminal divisé
 
 postman : icone en favori 
@@ -210,6 +212,16 @@ if(req.role !== "manager"){
 -------------------------------
 Création de customer et coach
 -> création de deux modèles
+
+type : mongoose.Schema.Types.ObjectId, ref: "User"}  donne le ralation entre la table user et la table customer pour récupérer les infos de user
+
+importer customer dans index models
+
+puis faire les routes tout vcomme user
+postman POST customerCreate
+
+dans MongoDB création des deux tables customers et users
+
 
 
 
